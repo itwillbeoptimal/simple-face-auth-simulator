@@ -1,3 +1,10 @@
 fastapi
 uvicorn[standard]
 python-multipart
+face-recognition
+dlib
+opencv-python
+numpy
+Pillow
+httpx
+python-dotenv
