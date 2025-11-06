@@ -1,0 +1,56 @@
+# Dependencies
+node_modules
+**/node_modules
+.yarn
+.pnp.*
+
+# Build outputs
+dist
+build
+.next
+coverage
+*.log
+
+# OS
+.DS_Store
+.idea
+
+# Python
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Ruby
+vendor
+Gemfile.lock
+
+# React Native
+ios/Pods
+android/.gradle
+*.xcworkspace
+*.xcodeproj
+
+# Generated
+**/generated/**
+*.min.js
+*.min.css
+
+# Config files
+*.config.js
+*.config.ts
+!vite.config.ts
+!eslint.config.js
+
+# iOS
+ios/
+android/
+
+# Test files
+coverage/
+.nyc_output/
+
+# Misc
+public/
+*.tsbuildinfo

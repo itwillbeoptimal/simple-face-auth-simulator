@@ -18,12 +18,5 @@ local.properties
 **/Pods/
 .metro-health-check*
 
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
 vendor/
 .bundle/
