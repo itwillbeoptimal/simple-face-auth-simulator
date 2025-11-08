@@ -27,15 +27,8 @@ export const baseConfig = tseslint.config(
       'import/order': [
         'error',
         {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
-          'newlines-between': 'always',
+          groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+          'newlines-between': 'ignore',
           alphabetize: {
             order: 'asc',
             caseInsensitive: true,
