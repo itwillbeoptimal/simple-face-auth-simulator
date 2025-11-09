@@ -1392,7 +1392,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.25.0":
+"@babel/runtime@npm:^7.25.0, @babel/runtime@npm:^7.28.4":
   version: 7.28.4
   resolution: "@babel/runtime@npm:7.28.4"
   checksum: 934b0a0460f7d06637d93fcd1a44ac49adc33518d17253b5a0b55ff4cb90a45d8fe78bf034b448911dbec7aff2a90b918697559f78d21c99ff8dbadae9565b55
@@ -2646,7 +2646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native/gradle-plugin@npm:0.82.1":
+"@react-native/gradle-plugin@npm:0.82.1, @react-native/gradle-plugin@npm:^0.82.1":
   version: 0.82.1
   resolution: "@react-native/gradle-plugin@npm:0.82.1"
   checksum: 7e7e2d768a8ff599dba5ef7b0a417e1d14a032a3344cc1e57852d4ebee1587dc877f83ae9dd4beae3b27fe2389d235227df12bd8aaa9be8b6ef1c7784419e0de
@@ -3584,18 +3584,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"appClient@workspace:app-client":
+"app-client@workspace:app-client":
   version: 0.0.0-use.local
-  resolution: "appClient@workspace:app-client"
+  resolution: "app-client@workspace:app-client"
   dependencies:
     "@babel/core": ^7.25.2
     "@babel/preset-env": ^7.25.3
-    "@babel/runtime": ^7.25.0
+    "@babel/runtime": ^7.28.4
     "@react-native-community/cli": 20.0.0
     "@react-native-community/cli-platform-android": 20.0.0
     "@react-native-community/cli-platform-ios": 20.0.0
     "@react-native/babel-preset": 0.82.1
     "@react-native/eslint-config": 0.82.1
+    "@react-native/gradle-plugin": ^0.82.1
     "@react-native/metro-config": 0.82.1
     "@react-native/new-app-screen": 0.82.1
     "@react-native/typescript-config": 0.82.1
