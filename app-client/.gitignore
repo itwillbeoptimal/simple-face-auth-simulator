@@ -1,11 +1,21 @@
+# Node
 node_modules/
 npm-debug.log
 yarn-error.log
 *.log
+*.tsbuildinfo
 
+# React Native / Metro
+*.jsbundle
+.metro-health-check*
+
+# macOS
 .DS_Store
-.idea
 
+# IDEs
+.idea/
+
+# Android
 build/
 *.iml
 .gradle
@@ -13,10 +23,21 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
+captures/
+*.apk
+*.aab
+*.ap_
 
-*.jsbundle
+# iOS
 **/Pods/
-.metro-health-check*
+DerivedData/
+ios/appClient.xcworkspace/xcuserdata/
+ios/appClient.xcodeproj/project.xcworkspace/xcuserdata
+*.xcscmblueprint
 
+# Ruby / Bundler
 vendor/
 .bundle/
+
+# Env
+.env
