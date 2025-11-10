@@ -3,5 +3,15 @@ module.exports = {
   plugins: [
     'babel-plugin-styled-components',
     'react-native-reanimated/plugin',
+    [
+      'module-resolver',
+      {
+        root: ['./src'],
+        extensions: ['.ts', '.tsx', '.jsx', '.js', '.json'],
+        alias: {
+          '@': './src',
+        },
+      },
+    ],
   ],
 };
