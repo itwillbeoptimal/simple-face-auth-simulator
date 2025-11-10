@@ -1,14 +1,13 @@
 import express from 'express';
+import apiRoutes from '@/api/routes';
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.json({ message: 'Hello World' });
-});
+app.use('/api', apiRoutes);
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
