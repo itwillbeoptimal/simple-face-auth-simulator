@@ -1,6 +1,6 @@
 import face_recognition
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageOps
 import io
 import httpx
 from typing import Optional, Tuple, List
@@ -8,13 +8,18 @@ from app.config import CORE_SERVER_URL
 from app.schemas.face import FaceRecognitionResponse, FaceEmbeddingResponse
 
 class FaceRecognitionService:
-    RECOGNITION_THRESHOLD = 0.6
+    RECOGNITION_THRESHOLD = 0.45
     CORE_SERVER_TIMEOUT = 10.0
 
     @staticmethod
     async def extract_face_encoding(image_bytes: bytes) -> Optional[np.ndarray]:
         try:
             image = Image.open(io.BytesIO(image_bytes))
+            image = ImageOps.exif_transpose(image)
+
+            if image.mode != 'RGB':
+                image = image.convert('RGB')
+
             image_array = np.array(image)
             face_encodings = face_recognition.face_encodings(image_array)
 
