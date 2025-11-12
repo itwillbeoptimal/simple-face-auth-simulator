@@ -1,17 +1,20 @@
 import { QueryClientProvider } from '@tanstack/react-query';
+import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ThemeProvider } from 'styled-components/native';
-import theme from '@/styles/theme';
 import { queryClient } from '@/utils/queryClient';
-import SignUp from '@/screens/SignUp';
+import theme from '@/styles/theme';
+import RootNavigator from '@/components/RootNavigator';
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
-        <ThemeProvider theme={theme}>
-          <SignUp />
-        </ThemeProvider>
+        <NavigationContainer>
+          <ThemeProvider theme={theme}>
+            <RootNavigator />
+          </ThemeProvider>
+        </NavigationContainer>
       </SafeAreaProvider>
     </QueryClientProvider>
   );
