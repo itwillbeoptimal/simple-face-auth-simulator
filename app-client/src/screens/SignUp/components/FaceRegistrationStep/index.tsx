@@ -71,7 +71,7 @@ const FaceRegistrationStep: React.FC<FaceRegistrationStepProps> = ({ onNext, onS
         <S.Subtitle>얼굴 정보를 등록하면 빠르게 입장할 수 있어요</S.Subtitle>
         <S.SafetyMessageWrapper>
           <ShieldIcon fill={theme.COLORS.LABEL.SECONDARY} />
-          <S.SafetyMessage>촬영된 사진은 얼굴 정보만 안전하게 변환하여 저장됩니다.</S.SafetyMessage>
+          <S.SafetyMessage>촬영된 사진은 안전하게 변환된 후 저장됩니다.</S.SafetyMessage>
         </S.SafetyMessageWrapper>
         <S.ContentWrapper>
           <S.ImageWrapper style={{ transform: [{ translateX: slideAnim }] }}>

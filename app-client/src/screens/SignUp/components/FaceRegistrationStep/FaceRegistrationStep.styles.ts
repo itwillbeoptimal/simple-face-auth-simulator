@@ -66,7 +66,8 @@ export const SafetyMessageWrapper = styled(View)`
 
 export const SafetyMessage = styled(StyledText)`
   color: ${props => props.theme.COLORS.LABEL.SECONDARY};
-  letter-spacing: -0.3px;
+  font-size: 14px;
+  letter-spacing: -0.4px;
 `;
 
 export const ButtonWrapper = styled(View)`
