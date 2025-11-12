@@ -3985,6 +3985,7 @@ __metadata:
     prettier: 2.8.8
     react: 19.1.1
     react-native: 0.82.1
+    react-native-circular-progress: ^1.4.1
     react-native-dotenv: ^3.4.11
     react-native-gesture-handler: ^2.29.1
     react-native-reanimated: ^3.16.1
@@ -10333,6 +10334,19 @@ __metadata:
   version: 19.2.0
   resolution: "react-is@npm:19.2.0"
   checksum: 9a23e1c2d0bbc13b383bc59a05f54e6eb95dd87e01aec8aa92a88618364b7b0ee8a5b057ad813cf61e2f7ae7d24503b624706acb609d07c54754e5ad2c522568
+  languageName: node
+  linkType: hard
+
+"react-native-circular-progress@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "react-native-circular-progress@npm:1.4.1"
+  dependencies:
+    prop-types: ^15.8.1
+  peerDependencies:
+    react: ">=16.0.0"
+    react-native: ">=0.50.0"
+    react-native-svg: ">=7.0.0"
+  checksum: bc25797a9b82c48452a22152883514080be091c68d635ac406a52b7fc39e2ab0497f1334e067b06e4b72ccff5941afbfc841b3d61164bc50a0d8b13507c27d18
   languageName: node
   linkType: hard
 
