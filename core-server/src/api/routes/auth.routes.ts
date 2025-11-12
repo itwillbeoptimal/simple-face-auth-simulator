@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { signup, login, refresh, logout } from '@/api/controllers/auth.controller';
+import { signup, login, refresh, logout, checkEmail } from '@/api/controllers/auth.controller';
 import { BadRequestError } from '@/shared/types/error';
 
 const router = Router();
@@ -23,5 +23,6 @@ router.post('/signup', upload.single('face'), signup);
 router.post('/login', login);
 router.post('/refresh', refresh);
 router.post('/logout', logout);
+router.get('/check-email', checkEmail);
 
 export default router;
