@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
 import { useTheme } from 'styled-components/native';
-import * as S from './SkipButton.styles.ts';
+import * as S from './SkipButton.styles';
 import SkipIcon from '@/assets/icons/right-arrow.svg';
 
 const Button: React.FC<TouchableOpacityProps> = ({ ...props }) => {
