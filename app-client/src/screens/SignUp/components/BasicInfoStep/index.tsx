@@ -42,7 +42,7 @@ const BasicInfoStep: React.FC<BasicInfoStepProps> = ({
           <S.FieldWrapper>
             <S.InputLabel>이메일</S.InputLabel>
             <Input
-              placeholder="example@email.com"
+              placeholder="이메일 주소를 입력해 주세요"
               value={email}
               onChangeText={onEmailChange}
               keyboardType="email-address"
