@@ -8,6 +8,7 @@ export const StyledButton = styled(TouchableOpacity)`
   width: 100%;
   padding: 16px;
   background-color: ${props => props.theme.COLORS.MAIN.PRIMARY};
+  opacity: ${props => (props.disabled ? 0.3 : 1)};
   border-radius: 12px;
 `;
 
