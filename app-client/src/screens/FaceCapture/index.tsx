@@ -74,7 +74,10 @@ const FaceCapture: React.FC = () => {
         },
       ]);
     } catch {
-      Alert.alert('얼굴 특징 추출 실패', '특징을 추출하지 못했습니다. 다시 촬영해 주세요.');
+      Alert.alert(
+        '특징 추출 실패',
+        '촬영된 사진에서 얼굴의 특징을 확인하지 못했어요. 다시 촬영해 주세요.',
+      );
       setProgress(0);
       setProcessStatus('idle');
     } finally {
