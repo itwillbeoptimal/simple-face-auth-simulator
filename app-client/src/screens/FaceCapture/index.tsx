@@ -9,6 +9,7 @@ import { useFaceDetection } from '@/hooks/useFaceDetection';
 import { validateFaceImage } from '@/apis/authApi';
 import * as S from './FaceCapture.styles';
 import SafeLayout from '@/components/SafeLayout';
+import Header from '@/components/Header';
 import { GUIDE_MESSAGES } from '@/constants/faceCaptureConfig';
 
 type ProcessStatus = 'idle' | 'extracting' | 'completed';
@@ -99,6 +100,7 @@ const FaceCapture: React.FC = () => {
 
   return (
     <SafeLayout>
+      <Header title="얼굴 촬영" />
       <S.Container>
         <S.GuideArea>
           <S.GuideText weight="MEDIUM">{message}</S.GuideText>
