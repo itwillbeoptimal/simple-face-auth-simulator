@@ -83,10 +83,10 @@ const FaceRegistrationStep: React.FC<FaceRegistrationStepProps> = ({ onNext, onS
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
-                marginTop: '-37.4%',
-                marginLeft: '-22%',
-                width: '44%',
-                height: '44%',
+                marginTop: '-35.4%',
+                marginLeft: '-20%',
+                width: '40%',
+                height: '40%',
               }}
             >
               <S.StyledLottieView ref={lottieRef} source={VerifyLottie} loop={false} />

@@ -12,7 +12,7 @@ export const Form = styled(View)`
 `;
 
 export const Title = styled(StyledText)`
-  font-size: 28px;
+  font-size: 24px;
   margin-bottom: 8px;
   letter-spacing: -1px;
 `;
