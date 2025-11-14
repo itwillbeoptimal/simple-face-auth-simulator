@@ -49,7 +49,10 @@ class FaceRecognitionService:
     @staticmethod
     async def fetch_stored_embeddings() -> List[dict]:
         try:
-            async with httpx.AsyncClient(timeout=FaceRecognitionService.CORE_SERVER_TIMEOUT) as client:
+            async with httpx.AsyncClient(
+                    timeout=FaceRecognitionService.CORE_SERVER_TIMEOUT,
+                    verify=False
+            ) as client:
                 response = await client.get(f"{CORE_SERVER_URL}/api/users/face-embeddings")
                 response.raise_for_status()
                 return response.json().get('data', [])
