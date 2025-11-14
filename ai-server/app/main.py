@@ -17,4 +17,11 @@ app.include_router(face.router)
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app.main:app", host="0.0.0.0", port=PORT, reload=True)
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=PORT,
+        reload=True,
+        ssl_keyfile="../cert/localhost-key.pem",
+        ssl_certfile="../cert/localhost.pem"
+    )
