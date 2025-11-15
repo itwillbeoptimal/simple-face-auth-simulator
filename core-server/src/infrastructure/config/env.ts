@@ -7,6 +7,6 @@ export const config = {
     expiryDays: 30,
   },
   aiServer: {
-    url: process.env.AI_SERVER_URL || 'http://localhost:8000',
+    url: process.env.AI_SERVER_URL || 'https://localhost:8000',
   },
 } as const;

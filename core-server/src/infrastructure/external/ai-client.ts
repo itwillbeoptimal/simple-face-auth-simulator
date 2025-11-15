@@ -1,8 +1,14 @@
+import https from 'https';
 import axios from 'axios';
 import FormData from 'form-data';
+import { config } from '@/infrastructure/config/env';
 import { BadRequestError, ErrorCode } from '@/shared/types/error';
 
-const AI_SERVER_URL = process.env.AI_SERVER_URL || 'http://localhost:8000';
+const AI_SERVER_URL = config.aiServer.url;
+
+const httpsAgent = new https.Agent({
+  rejectUnauthorized: process.env.NODE_ENV === 'production',
+});
 
 interface FaceEmbeddingResponse {
   success: boolean;
@@ -25,6 +31,7 @@ export const extractFaceEmbedding = async (imageBuffer: Buffer): Promise<number[
         headers: {
           ...formData.getHeaders(),
         },
+        httpsAgent,
         timeout: 10000,
       },
     );
