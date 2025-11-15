@@ -1,7 +1,13 @@
 import fs from 'fs';
 import https from 'https';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import cors from 'cors';
 import express from 'express';
 import apiRoutes from '@/api/routes';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = 3000;
@@ -11,6 +17,13 @@ const options = {
 };
 
 app.use(express.json());
+
+app.use(cors({
+  origin: 'https://localhost:5173',
+  credentials: true
+}));
+
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api', apiRoutes);
 
