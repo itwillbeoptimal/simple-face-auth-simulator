@@ -18,10 +18,15 @@ const options = {
 
 app.use(express.json());
 
-app.use(cors({
-  origin: 'https://localhost:5173',
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      'https://localhost:5173',
+      ...(process.env.WEB_CLIENT_URL ? [process.env.WEB_CLIENT_URL] : []),
+    ],
+    credentials: true,
+  }),
+);
 
 app.use(express.static(path.join(__dirname, '../public')));
 
