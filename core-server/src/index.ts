@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import cors from 'cors';
 import express from 'express';
 import apiRoutes from '@/api/routes';
+import { errorHandler, notFoundHandler } from '@/shared/middlewares/error-handler.middleware';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -31,6 +32,9 @@ app.use(
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api', apiRoutes);
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 https.createServer(options, app).listen(PORT, () => {
   console.log(`HTTPS Server running on https://localhost:${PORT}`);
