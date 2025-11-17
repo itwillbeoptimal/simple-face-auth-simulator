@@ -2337,6 +2337,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@lottiefiles/dotlottie-react@npm:^0.17.7":
+  version: 0.17.7
+  resolution: "@lottiefiles/dotlottie-react@npm:0.17.7"
+  dependencies:
+    "@lottiefiles/dotlottie-web": 0.56.0
+  peerDependencies:
+    react: ^17 || ^18 || ^19
+  checksum: 7a429cf5d13b56680df240b8146e7a9fc25ce6945b21e042e61d4baaded17718a0c8985dd518b9ac57b92d3a43562c462e56f50136d7be8dc8e52b54c6eecfde
+  languageName: node
+  linkType: hard
+
+"@lottiefiles/dotlottie-web@npm:0.56.0":
+  version: 0.56.0
+  resolution: "@lottiefiles/dotlottie-web@npm:0.56.0"
+  checksum: d2c1f7f4cf3af834a6296c61084a8d009ffa3e90254540784e594b3b7ce3e0e410e7779e7cce10ecbc583fda97bd19621ce859396efb86a7444252c7fd6170ee
+  languageName: node
+  linkType: hard
+
 "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1":
   version: 5.1.1-v1
   resolution: "@nicolo-ribaudo/eslint-scope-5-internals@npm:5.1.1-v1"
@@ -12652,6 +12670,7 @@ __metadata:
     "@emotion/react": ^11.14.0
     "@emotion/styled": ^11.14.1
     "@eslint/js": ^9.36.0
+    "@lottiefiles/dotlottie-react": ^0.17.7
     "@tanstack/react-query": ^5.90.9
     "@types/node": ^24.6.0
     "@types/react": ^19.1.16
