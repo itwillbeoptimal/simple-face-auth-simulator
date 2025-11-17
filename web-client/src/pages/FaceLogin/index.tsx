@@ -1,22 +1,17 @@
 import { useAtomValue } from 'jotai';
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import RecognitionSuccess from './components/RecognitionSuccess';
 import * as S from './FaceLogin.styles';
 import useFaceRecognition from './hooks/useFaceRecognition';
 import { recognizedUserIdAtom } from '@/atoms/userAtom';
 
 const FaceLogin = () => {
-  const navigate = useNavigate();
   const { videoRef, canvasRef } = useFaceRecognition();
   const recognizedUserId = useAtomValue(recognizedUserIdAtom);
   const [showSuccess, setShowSuccess] = useState(false);
   const isInitialMount = useRef(true);
 
   useEffect(() => {
-    if (isInitialMount.current && recognizedUserId) {
-      void navigate('/food', { replace: true });
-    }
     isInitialMount.current = false;
   }, []);
 
