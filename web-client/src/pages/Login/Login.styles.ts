@@ -13,17 +13,16 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
   padding: 40px;
+  gap: 32px;
 `;
 
 export const Title = styled.h1`
   font-size: 32px;
   font-weight: 700;
   color: ${props => props.theme.COLORS.LABEL.PRIMARY};
-  margin: 0;
 `;
 
 export const Form = styled.form`
@@ -47,7 +46,7 @@ export const Label = styled.label`
 
 export const Input = styled.input`
   font-size: 16px;
-  padding: 14px 16px;
+  padding: 16px;
   background-color: rgba(255, 255, 255, 0.05);
   color: ${props => props.theme.COLORS.LABEL.PRIMARY};
   border: 1px solid ${props => props.theme.COLORS.LABEL.QUATERNARY};
