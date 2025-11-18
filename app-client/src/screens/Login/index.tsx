@@ -5,7 +5,10 @@ import { useSetAtom } from 'jotai';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { isAuthenticatedAtom } from '@/atoms/authAtom';
 import type { NavigationProp } from '@/types/Navigation';
+import type { ValidationErrors } from '@/types/Errors';
 import useLogin from '@/hooks/useLogin';
+import { validateEmail } from '@/utils/validators';
+import { ERROR_MESSAGES } from '@/constants/errorMessages';
 import Input from '@/components/Input';
 import Button from '@/components/Button';
 import * as S from './Login.styles';
@@ -14,7 +17,7 @@ import RightArrowIcon from '@/assets/icons/right-arrow.svg';
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [errors, setErrors] = useState<ValidationErrors>({});
 
   const loginMutation = useLogin();
   const setIsAuthenticated = useSetAtom(isAuthenticatedAtom);
@@ -22,16 +25,15 @@ const Login: React.FC = () => {
   const navigation = useNavigation<NavigationProp<'Login'>>();
 
   const validateForm = (): boolean => {
-    const newErrors: { email?: string; password?: string } = {};
+    const newErrors: ValidationErrors = {};
 
-    if (!email.trim()) {
-      newErrors.email = '이메일을 입력해 주세요';
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = '유효한 이메일 주소를 입력해 주세요';
+    const emailError = validateEmail(email);
+    if (emailError) {
+      newErrors.email = emailError;
     }
 
     if (!password.trim()) {
-      newErrors.password = '비밀번호를 입력해 주세요';
+      newErrors.password = ERROR_MESSAGES.PASSWORD_REQUIRED;
     }
 
     setErrors(newErrors);
