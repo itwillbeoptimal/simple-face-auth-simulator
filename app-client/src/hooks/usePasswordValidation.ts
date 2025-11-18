@@ -1,17 +1,15 @@
 import { useState, useRef } from 'react';
 import { verifyPassword } from '@/apis/userApi';
-
-interface PasswordErrors {
-  currentPassword?: string;
-  newPassword?: string;
-  confirmPassword?: string;
-}
+import type { PasswordValidationErrors } from '@/types/Errors';
+import { validatePassword as validatePasswordUtil } from '@/utils/validators';
+import { ERROR_MESSAGES } from '@/constants/errorMessages';
+import { PASSWORD_VALIDATION_DEBOUNCE_MS } from '@/constants/validationConfig';
 
 interface UsePasswordValidationReturn {
   currentPassword: string;
   newPassword: string;
   confirmPassword: string;
-  passwordErrors: PasswordErrors;
+  passwordErrors: PasswordValidationErrors;
   validating: boolean;
   hasPasswordChange: boolean;
   handleCurrentPasswordChange: (value: string) => void;
@@ -26,7 +24,7 @@ export const usePasswordValidation = (): UsePasswordValidationReturn => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordErrors, setPasswordErrors] = useState<PasswordErrors>({});
+  const [passwordErrors, setPasswordErrors] = useState<PasswordValidationErrors>({});
   const [validating, setValidating] = useState(false);
 
   const newPasswordTimer = useRef<NodeJS.Timeout | null>(null);
@@ -38,17 +36,18 @@ export const usePasswordValidation = (): UsePasswordValidationReturn => {
       return;
     }
 
-    if (password.length < 6) {
-      setPasswordErrors(prev => ({
-        ...prev,
-        newPassword: '비밀번호는 최소 6자 이상이어야 합니다',
-      }));
+    const passwordError = validatePasswordUtil(password);
+    if (passwordError) {
+      setPasswordErrors(prev => ({ ...prev, newPassword: passwordError }));
     } else {
       setPasswordErrors(prev => ({ ...prev, newPassword: undefined }));
     }
 
     if (confirmPassword && password !== confirmPassword) {
-      setPasswordErrors(prev => ({ ...prev, confirmPassword: '비밀번호가 일치하지 않습니다' }));
+      setPasswordErrors(prev => ({
+        ...prev,
+        confirmPassword: ERROR_MESSAGES.PASSWORD_MISMATCH,
+      }));
     } else if (confirmPassword) {
       setPasswordErrors(prev => ({ ...prev, confirmPassword: undefined }));
     }
@@ -61,7 +60,10 @@ export const usePasswordValidation = (): UsePasswordValidationReturn => {
     }
 
     if (password !== newPassword) {
-      setPasswordErrors(prev => ({ ...prev, confirmPassword: '비밀번호가 일치하지 않습니다' }));
+      setPasswordErrors(prev => ({
+        ...prev,
+        confirmPassword: ERROR_MESSAGES.PASSWORD_MISMATCH,
+      }));
     } else {
       setPasswordErrors(prev => ({ ...prev, confirmPassword: undefined }));
     }
@@ -81,7 +83,7 @@ export const usePasswordValidation = (): UsePasswordValidationReturn => {
 
     newPasswordTimer.current = setTimeout(() => {
       validateNewPassword(value);
-    }, 500);
+    }, PASSWORD_VALIDATION_DEBOUNCE_MS);
   };
 
   const handleConfirmPasswordChange = (value: string) => {
@@ -93,7 +95,7 @@ export const usePasswordValidation = (): UsePasswordValidationReturn => {
 
     confirmPasswordTimer.current = setTimeout(() => {
       validateConfirmPassword(value);
-    }, 500);
+    }, PASSWORD_VALIDATION_DEBOUNCE_MS);
   };
 
   const hasPasswordChange = Boolean(currentPassword && newPassword && confirmPassword);
@@ -107,28 +109,29 @@ export const usePasswordValidation = (): UsePasswordValidationReturn => {
       if (!currentPassword) {
         setPasswordErrors(prev => ({
           ...prev,
-          currentPassword: '현재 비밀번호를 입력해주세요',
+          currentPassword: ERROR_MESSAGES.CURRENT_PASSWORD_REQUIRED,
         }));
       }
       if (!newPassword) {
         setPasswordErrors(prev => ({
           ...prev,
-          newPassword: '새 비밀번호를 입력해주세요',
+          newPassword: ERROR_MESSAGES.NEW_PASSWORD_REQUIRED,
         }));
       }
       if (!confirmPassword) {
         setPasswordErrors(prev => ({
           ...prev,
-          confirmPassword: '새 비밀번호 확인을 입력해주세요',
+          confirmPassword: ERROR_MESSAGES.PASSWORD_CONFIRM_REQUIRED,
         }));
       }
       return false;
     }
 
-    if (newPassword.length < 6) {
+    const passwordError = validatePasswordUtil(newPassword);
+    if (passwordError) {
       setPasswordErrors(prev => ({
         ...prev,
-        newPassword: '비밀번호는 최소 6자 이상이어야 합니다',
+        newPassword: passwordError,
       }));
       return false;
     }
@@ -136,7 +139,7 @@ export const usePasswordValidation = (): UsePasswordValidationReturn => {
     if (newPassword !== confirmPassword) {
       setPasswordErrors(prev => ({
         ...prev,
-        confirmPassword: '비밀번호가 일치하지 않습니다',
+        confirmPassword: ERROR_MESSAGES.PASSWORD_MISMATCH,
       }));
       return false;
     }
