@@ -1,5 +1,7 @@
 import { BadRequestError, ErrorCode } from '@/shared/types/error';
 
+const MIN_PASSWORD_LENGTH = 6;
+
 export const validateRequired = (fields: Record<string, unknown>, fieldNames: string[]) => {
   const missing = fieldNames.filter(name => !fields[name]);
   if (missing.length > 0) {
@@ -17,8 +19,11 @@ export const validateEmail = (email: string) => {
   }
 };
 
-export const validateFile = (file: Express.Multer.File | undefined, message: string) => {
-  if (!file) {
-    throw new BadRequestError(message, ErrorCode.VALIDATION_ERROR);
+export const validatePassword = (password: string) => {
+  if (!password || password.length < MIN_PASSWORD_LENGTH) {
+    throw new BadRequestError(
+      `비밀번호는 최소 ${MIN_PASSWORD_LENGTH}자 이상이어야 합니다`,
+      ErrorCode.VALIDATION_ERROR,
+    );
   }
 };
