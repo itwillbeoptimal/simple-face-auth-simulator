@@ -7,9 +7,15 @@ interface HeaderProps {
   title: string;
   rightContent?: React.ReactNode;
   goBack?: () => void;
+  showBackButton?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ title, rightContent, goBack }) => {
+const Header: React.FC<HeaderProps> = ({
+  title,
+  rightContent,
+  goBack,
+  showBackButton = true
+}) => {
   const navigation = useNavigation();
 
   const handleGoBack = () => {
@@ -19,9 +25,13 @@ const Header: React.FC<HeaderProps> = ({ title, rightContent, goBack }) => {
 
   return (
     <S.Container>
-      <S.BackButton onPress={handleGoBack}>
-        <BackIcon />
-      </S.BackButton>
+      {showBackButton ? (
+        <S.BackButton onPress={handleGoBack}>
+          <BackIcon />
+        </S.BackButton>
+      ) : (
+        <S.BackButton disabled />
+      )}
       <S.Title weight="SEMI_BOLD">{title}</S.Title>
       <S.RightContent>{rightContent}</S.RightContent>
     </S.Container>
