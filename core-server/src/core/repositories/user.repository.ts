@@ -6,13 +6,6 @@ export interface CreateUserData {
   name: string;
 }
 
-export interface UserWithPreferences {
-  id: string;
-  email: string;
-  name: string;
-  createdAt: Date;
-}
-
 export class UserRepository {
   async findByEmail(email: string) {
     return prisma.user.findUnique({ where: { email } });
@@ -31,6 +24,13 @@ export class UserRepository {
 
   async delete(id: string) {
     return prisma.user.delete({ where: { id } });
+  }
+
+  async updatePassword(id: string, hashedPassword: string) {
+    return prisma.user.update({
+      where: { id },
+      data: { password: hashedPassword },
+    });
   }
 }
 
