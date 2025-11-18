@@ -10,6 +10,9 @@ export type RootStackParamList = {
   FaceCapture: {
     returnTo: 'SignUp';
   };
+  My: undefined;
+  ProfileEdit: undefined;
+  AccountInfo: undefined;
 };
 
 export type NavigationProp<T extends keyof RootStackParamList> = StackNavigationProp<
