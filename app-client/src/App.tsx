@@ -1,3 +1,4 @@
+import { LogBox } from 'react-native';
 import { Provider as JotaiProvider } from 'jotai';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -8,7 +9,9 @@ import { store } from '@/store';
 import theme from '@/styles/theme';
 import RootNavigator from '@/components/RootNavigator';
 
-function App() {
+LogBox.ignoreAllLogs();
+
+const App = () => {
   return (
     <JotaiProvider store={store}>
       <QueryClientProvider client={queryClient}>
@@ -22,6 +25,6 @@ function App() {
       </QueryClientProvider>
     </JotaiProvider>
   );
-}
+};
 
 export default App;
