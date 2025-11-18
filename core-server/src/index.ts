@@ -5,13 +5,15 @@ import { fileURLToPath } from 'url';
 import cors from 'cors';
 import express from 'express';
 import apiRoutes from '@/api/routes';
+import { config } from '@/infrastructure/config/env';
 import { errorHandler, notFoundHandler } from '@/shared/middlewares/error-handler.middleware';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.CORE_SERVER_PORT);
+
 const options = {
   key: fs.readFileSync('../cert/localhost-key.pem'),
   cert: fs.readFileSync('../cert/localhost.pem'),
@@ -21,10 +23,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: [
-      'https://localhost:5173',
-      ...(process.env.WEB_CLIENT_URL ? [process.env.WEB_CLIENT_URL] : []),
-    ],
+    origin: config.webClient.url ? [config.webClient.url] : [],
     credentials: true,
   }),
 );

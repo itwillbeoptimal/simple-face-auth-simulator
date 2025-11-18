@@ -2,7 +2,9 @@ import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { store } from '@/store';
 import { logoutAtom } from '@/atoms/authAtom';
-import { API_BASE_URL } from '@env';
+import { HOST_IP, CORE_SERVER_PORT } from '@env';
+
+const API_BASE_URL = `https://${HOST_IP}:${CORE_SERVER_PORT}/api`;
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
