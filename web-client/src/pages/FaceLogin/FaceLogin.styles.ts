@@ -22,7 +22,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100dvh;
   padding: 40px;
-  background: linear-gradient(135deg, rgba(74, 144, 226, 0.03) 0%, rgba(80, 227, 194, 0.03) 100%);
 `;
 
 export const Title = styled.h1`
