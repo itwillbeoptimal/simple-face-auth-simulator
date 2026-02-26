@@ -1,17 +1,16 @@
 # 🖥️ 간단한 얼굴 인증 서비스 시뮬레이션
 
 ## 📖 프로젝트 소개
-
 <table>
   <tr>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/90f747e2-5d59-4046-9f30-db065a7002bd" height="400"><br>
+      <img src="https://github.com/user-attachments/assets/1a503599-3d1f-4e87-9d2c-c794ab59ea3f" height="400"><br>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/803d0234-e4a7-410e-b9d1-3d97d5361901" height="400"><br>
+      <img src="https://github.com/user-attachments/assets/c2621f98-ab1e-4c54-b410-bd2576b6e6fd" height="400"><br>
     </td>
     <td align="center">
-      <img src="https://github.com/user-attachments/assets/59cc85ce-ab72-494b-907d-6d5e65a83bfa" height="400"><br>
+      <img src="https://github.com/user-attachments/assets/477a6836-fb58-4278-8aa8-36f477574281" height="400"><br>
     </td>
   </tr>
 </table>
